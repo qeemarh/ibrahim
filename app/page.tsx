@@ -191,7 +191,7 @@ export default function Page() {
             className="text-center space-y-4"
           >
             <h1 className="text-5xl md:text-7xl font-serif text-primary font-bold leading-tight text-balance">
-              Ayanfe mi
+              Ishola mi
             </h1>
 
             <p className="text-2xl md:text-3xl font-serif text-accent font-light">

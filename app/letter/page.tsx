@@ -45,46 +45,30 @@ export default function LetterPage() {
     },
   ];
 
-  const letterContent = `Happy Birthday, my love ❤️
+  const letterContent = `Happy Birthday, Ishola mi ❤️
 
-Before anything else, I pray that Allah blesses this new year of your life abundantly. May He grant you good health, happiness, peace of mind, success in every area of your life, and countless reasons to smile. May He increase you in wisdom, strengthen your deen, bless your rizq, protect you from harm, and make this year better than every year before it. Ameen.
+Before everything, I pray that Allah blesses this year of your life with endless blessings, success in all your endeavors, good health, and a heart filled with peace. May He increase your wisdom, strengthen your faith, and grant you all the goodness you deserve. Ameen.
 
-Today is special because it's the day Allah brought you into this world, and I genuinely don't think I'll ever stop being grateful that He did.
+I still can't believe I'm the one writing this to you. On the 8th of March, when you sent me that "Asalamualaikum" message on Instagram during Ramadan, I had no idea that one simple greeting would change my entire life. But here we are, and I'm so grateful Allah knew what I needed before I even knew it myself.
 
-It's funny because before you, you were just another person existing somewhere in the world, living your life completely unaware that one day you'd become one of the most important people in mine. Yet somehow, here we are.
+Do you remember how we just... vibed? From that very first conversation, it felt different. It felt right. I can go back to check our chats from that day—the way you made me feel seen, heard, and valued from the very beginning. That was the moment I started falling for you, even if I didn't fully realize it yet.
 
-And I need you to know how much of a blessing you have been to me.
+And then March 28th came. The day you asked me to be your girlfriend with flowers and a handwritten letter. I still have that letter, you know. When I read it, I'm reminded of exactly why my heart chose you. That day made it official—you became the most important person in my world.
 
-Thank you for your patience.
-Thank you for your consistency.
-Thank you for your kindness.
-Thank you for making me feel loved in ways I didn't even know I needed.
+I'm grateful for every conversation we've had. For every time you've made me laugh until my stomach hurt. For the inside jokes that only we understand—Tunde, "if you beat me good for you, but if I beat you," the sips self-control sticker. These are the little moments that make our love story uniquely ours.
 
-Thank you for every call, every conversation, every "yes mama," every "talk to me princess," every reassurance, every laugh, and every moment you've given me over these past months.
+I'm grateful that you were brave enough to say "I love you" first. That moment was terrifying and beautiful all at once. And I'm grateful that I get to love you back with everything I have. Some days I wonder how I got so lucky to call you mine.
 
-One of my favorite things about you is your heart. The way you care about the people you love. The way you show up. The way you listen. The way you make people feel safe around you. There is something so beautiful about who you are beyond everything else, and I hope you never lose that.
+I love that Ibrahim (my Ibrahim) cares so deeply about everyone around him. Your heart is the most beautiful thing about you, and I hope you never lose that goodness.
 
-I hope this year brings you opportunities you've prayed for, success you've worked for, happiness you deserve, and blessings you haven't even imagined yet.
+Thank you for these almost 3 months of being officially yours. They've been the happiest of my life. Thank you for showing up for me every single day. Thank you for listening when I need to talk. Thank you for being patient, kind, and consistently choosing me.
 
-I also pray that whenever you miss your dad, Allah replaces the heaviness with peace, fills your heart with comfort, and grants him the highest ranks in Jannah. Ameen.
+I know this year will bring you everything you've been praying for. I know Allah has amazing plans for us. And I'm honored to be on this journey with you.
 
-And since it's your birthday, let me be a little selfish for a second.
+Happy Birthday, my love. May this year be filled with happiness, laughter, unforgettable memories, and all the blessings your beautiful heart deserves.
 
-I'm grateful that I get to love you.
-I'm grateful that I get to know you.
-And I'm grateful that out of all the people in this world, I get to call you mine.
-
-You have brought so much happiness into my life, and I hope that today you feel even a fraction of the love that you give to everyone around you.
-
-Happy Birthday, baby. ❤️
-
-May this new chapter of your life be filled with barakah, laughter, answered prayers, unforgettable memories, and all the goodness your heart can hold.
-
-I love you.
-
-Yours always,
-
-Your Princess ❤️`;
+Forever yours,
+Asmau 💜❤️`;
 
   const containerVariants = {
     hidden: { opacity: 0 },

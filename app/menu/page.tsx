@@ -45,14 +45,6 @@ const activities = [
     href: '/love-notes',
     color: 'from-accent to-secondary',
   },
-  {
-    id: 'timeline',
-    title: 'Our Timeline',
-    description: 'Our journey together',
-    icon: '📅',
-    href: '/timeline',
-    color: 'from-primary to-purple-400',
-  },
 ];
 
 export default function MenuPage() {

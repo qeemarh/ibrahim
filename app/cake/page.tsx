@@ -140,78 +140,100 @@ export default function CakePage() {
           className="relative flex justify-center mb-12"
         >
           <div className="relative w-full max-w-md">
-            {/* Birthday Cake - Avatar Theme */}
+            {/* Birthday Cake - Realistic Design */}
             <div className="relative h-96">
               {/* Cake layers */}
               <motion.div
                 className="absolute inset-0 flex flex-col justify-end items-center"
                 animate={blownOut ? { y: 20, opacity: 0.5 } : { y: 0, opacity: 1 }}
               >
-                {/* Top layer with frosting swirl */}
-                <div className="relative w-56 h-32 rounded-full bg-gradient-to-b from-blue-400 to-blue-600 shadow-2xl border-4 border-blue-500">
-                  {/* Avatar theme decoration */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <motion.div
-                        className="text-6xl mb-2"
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        🌍
-                      </motion.div>
-                      <p className="text-white font-bold text-sm">Pandora</p>
-                    </div>
-                  </div>
+                {/* Top layer - chocolate cake with frosting */}
+                <div className="relative w-56 h-24 bg-gradient-to-b from-amber-700 to-amber-900 rounded-t-3xl shadow-2xl border-4 border-amber-800">
+                  {/* Vanilla frosting swirls on top */}
+                  <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-amber-100 to-amber-50 rounded-t-3xl opacity-90" />
                   
-                  {/* Frosting details */}
-                  <div className="absolute -top-2 left-8 w-12 h-8 bg-yellow-300 rounded-full opacity-70" />
-                  <div className="absolute -top-2 right-12 w-10 h-6 bg-yellow-300 rounded-full opacity-70" />
+                  {/* Decorative frosting piping */}
+                  <div className="absolute -top-1 left-6 w-3 h-5 bg-amber-100 rounded-full opacity-70" />
+                  <div className="absolute -top-1 left-16 w-2 h-4 bg-amber-100 rounded-full opacity-70" />
+                  <div className="absolute -top-1 right-16 w-2 h-4 bg-amber-100 rounded-full opacity-70" />
+                  <div className="absolute -top-1 right-6 w-3 h-5 bg-amber-100 rounded-full opacity-70" />
                 </div>
 
                 {/* Middle layer */}
-                <div className="w-64 h-20 rounded-3xl bg-gradient-to-b from-purple-400 to-purple-600 shadow-xl border-4 border-purple-500 flex items-center justify-around px-8">
-                  <span className="text-4xl">🦋</span>
-                  <span className="text-4xl">🌺</span>
-                  <span className="text-4xl">🦋</span>
+                <div className="relative w-64 h-28 bg-gradient-to-b from-amber-800 to-amber-950 rounded-3xl shadow-2xl border-4 border-amber-900">
+                  {/* Frosting drip effect */}
+                  <div className="absolute top-0 left-0 w-full h-6 bg-gradient-to-b from-amber-100 to-transparent opacity-70 rounded-t-2xl" />
+                  
+                  {/* Decorative details */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="flex gap-8">
+                      <div className="text-2xl">💜</div>
+                      <div className="text-2xl">✨</div>
+                      <div className="text-2xl">💜</div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Bottom layer */}
-                <div className="w-80 h-24 rounded-3xl bg-gradient-to-b from-cyan-300 to-cyan-500 shadow-xl border-4 border-cyan-400" />
+                {/* Bottom layer - base */}
+                <div className="w-80 h-32 bg-gradient-to-b from-amber-900 to-amber-950 rounded-b-3xl shadow-2xl border-4 border-amber-900">
+                  {/* Frosting details on side */}
+                  <div className="absolute top-0 left-0 w-full h-6 bg-gradient-to-b from-amber-100 to-transparent opacity-60 rounded-t-2xl" />
+                </div>
 
-                {/* Plate */}
-                <div className="w-96 h-4 bg-gray-300 rounded-full shadow-lg" />
+                {/* Decorative cake plate */}
+                <div className="w-96 h-8 bg-gradient-to-b from-gray-300 to-gray-400 rounded-full shadow-2xl border-2 border-gray-500" />
               </motion.div>
 
-              {/* Candles */}
+              {/* Candles with realistic flame */}
               <AnimatePresence>
                 {!blownOut && (
                   <>
                     {[0, 1, 2, 3].map((index) => (
                       <motion.div
                         key={`candle-${index}`}
-                        className="absolute top-0"
+                        className="absolute top-12"
                         style={{
-                          left: `${20 + index * 22}%`,
+                          left: `${18 + index * 20}%`,
                         }}
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0, scale: 0 }}
                         transition={{ duration: 0.6 }}
                       >
-                        {/* Candle stick */}
-                        <div className="w-2 h-16 bg-yellow-100 rounded-full mx-auto" />
+                        {/* Candle wax stick - cream/white colored */}
+                        <div className="w-3 h-20 bg-gradient-to-b from-red-200 to-red-300 rounded-full mx-auto shadow-md border border-red-400" />
 
-                        {/* Flame */}
+                        {/* Flame glow effect */}
                         <motion.div
-                          className="w-4 h-8 bg-gradient-to-t from-orange-400 to-yellow-300 rounded-full mx-auto"
+                          className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-8 h-10 rounded-full opacity-60"
+                          style={{
+                            background: 'radial-gradient(circle, rgba(255,200,0,0.8) 0%, rgba(255,100,0,0.4) 100%)',
+                          }}
                           animate={{
-                            scale: [1, 1.2, 1],
-                            opacity: [1, 0.8, 1],
+                            scale: [1, 1.3, 1.1, 1.2, 1],
+                            opacity: [0.6, 0.8, 0.5, 0.7, 0.6],
                           }}
                           transition={{
-                            duration: 0.6,
+                            duration: 1,
                             repeat: Infinity,
+                            ease: 'easeInOut',
                           }}
                         />
+
+                        {/* Actual flame shape */}
+                        <motion.div
+                          className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-3 h-10"
+                          animate={{
+                            scaleY: [1, 1.2, 0.9, 1.1, 1],
+                            rotateZ: [0, -2, 2, -1, 0],
+                          }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            ease: 'easeInOut',
+                          }}
+                        >
+                          <div className="w-full h-full bg-gradient-to-t from-orange-500 via-yellow-400 to-yellow-100 rounded-full shadow-lg blur-sm" />
+                        </motion.div>
                       </motion.div>
                     ))}
                   </>
