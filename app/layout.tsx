@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import AudioProvider from './providers/audio-provider'
+import AuthGuard from './auth-guard'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
 const geistMono = Geist_Mono({
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: 'light',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#FFF5F0' },
+    { media: '(prefers-color-scheme: light)', color: '#FAF5FE' },
   ],
 }
 
@@ -53,7 +54,9 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} bg-background`}>
       <body className="font-sans antialiased">
         <AudioProvider>
-          {children}
+          <AuthGuard>
+            {children}
+          </AuthGuard>
         </AudioProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

@@ -112,7 +112,7 @@ Your Princess ❤️`;
           {/* Photo Gallery */}
           <motion.div variants={itemVariants} className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-serif text-primary font-bold">
-              Special Moments
+              Ayanfe mi
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {images.map((image, index) => (
@@ -134,7 +134,7 @@ Your Princess ❤️`;
               ))}
             </div>
             <p className="text-muted-foreground italic text-lg">
-              More memories to capture together...
+              Your beautiful moments, forever cherished in my heart...
             </p>
           </motion.div>
 
@@ -171,7 +171,7 @@ Your Princess ❤️`;
                     <div className="w-full h-full flex items-center justify-center">
                       <div className="text-center text-white">
                         <p className="text-sm font-light">To my Love</p>
-                        <p className="text-2xl font-serif font-bold">Ibrahim</p>
+                        <p className="text-xl font-serif font-bold">Ibrahim Sulu-Gambari</p>
                       </div>
                     </div>
                   </motion.div>

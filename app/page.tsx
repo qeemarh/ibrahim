@@ -156,28 +156,28 @@ export default function Page() {
       >
         <div className="flex flex-col items-center gap-8">
 
-          {/* Baby Picture with Birthday Hat */}
+          {/* Picture with Birthday Decoration */}
           <motion.div variants={slideInVariants} className="relative">
-            <div className="relative w-72 h-72 md:w-96 md:h-96">
+            <div className="relative w-72 h-80 md:w-96 md:h-[28rem]">
               <motion.div variants={pulseVariants} animate="animate" className="absolute inset-0">
                 <div className="absolute inset-0 bg-gradient-to-br from-accent to-primary opacity-20 rounded-3xl blur-2xl" />
               </motion.div>
 
-              <div className="relative bg-white p-3 rounded-3xl shadow-2xl">
+              <div className="relative bg-white p-4 rounded-3xl shadow-2xl h-full flex items-center justify-center">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-06-13%20at%2014.06.55-xbkhOK20pDEB1RYOk8pDLgXIK2JgF9.jpeg"
-                  alt="Baby picture"
-                  className="w-full h-full object-cover rounded-2xl"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-06-13%20at%2014.19.53-FnzYtVV1nAKGznxC7V2NU8Yclh0wK9.jpeg"
+                  alt="Birthday boy"
+                  className="h-full w-full object-cover rounded-2xl"
                 />
               </div>
 
-              {/* Birthday Hat */}
+              {/* Birthday Decoration */}
               <motion.div
                 className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-7xl"
                 variants={hatVariants}
                 animate="animate"
               >
-                🎉
+                💜
               </motion.div>
 
               {/* Decorative frame glow */}
@@ -191,7 +191,7 @@ export default function Page() {
             className="text-center space-y-4"
           >
             <h1 className="text-5xl md:text-7xl font-serif text-primary font-bold leading-tight text-balance">
-              Ishola mi
+              Ayanfe mi
             </h1>
 
             <p className="text-2xl md:text-3xl font-serif text-accent font-light">
