@@ -1,64 +1,17 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useAudio } from '@/app/providers/audio-provider';
 
 export default function Page() {
   const [isClient, setIsClient] = useState(false);
-  const [musicStarted, setMusicStarted] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const { startMusic } = useAudio();
 
   useEffect(() => {
     setIsClient(true);
-
-    const audio = new Audio('/daylight.mp3');
-    audio.loop = true;
-    audio.volume = 0;
-
-    audioRef.current = audio;
-
-    return () => {
-      audio.pause();
-      audioRef.current = null;
-    };
   }, []);
-
-  const startMusic = async () => {
-    if (!audioRef.current || musicStarted) return;
-
-    try {
-      await audioRef.current.play();
-
-      setMusicStarted(true);
-
-      let volume = 0;
-
-      const fade = setInterval(() => {
-        volume += 0.02;
-
-        if (volume >= 0.3) {
-          volume = 0.3;
-          clearInterval(fade);
-        }
-
-        if (audioRef.current) {
-          audioRef.current.volume = volume;
-        }
-      }, 100);
-    } catch (error) {
-      console.log('Could not start music');
-    }
-  };
-
-  const toggleMute = () => {
-    if (!audioRef.current) return;
-
-    audioRef.current.muted = !audioRef.current.muted;
-    setIsMuted(audioRef.current.muted);
-  };
 
   if (!isClient) {
     return null;
@@ -110,57 +63,89 @@ export default function Page() {
     },
   };
 
+  const hatVariants = {
+    animate: {
+      rotate: [0, 5, -5, 0],
+      y: [0, -5, 5, 0],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      },
+    },
+  };
+
+  const pulseVariants = {
+    animate: {
+      scale: [1, 1.05, 1],
+      boxShadow: [
+        '0 0 20px rgba(194, 24, 91, 0.3)',
+        '0 0 40px rgba(194, 24, 91, 0.6)',
+        '0 0 20px rgba(194, 24, 91, 0.3)',
+      ],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      },
+    },
+  };
+
   return (
     <main className="min-h-screen w-full bg-background overflow-hidden flex items-center justify-center relative">
 
-      {/* Music Controls */}
-      {musicStarted && (
-        <div className="fixed top-5 right-5 z-50">
-          <button
-            onClick={toggleMute}
-            className="bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-lg hover:scale-105 transition"
-          >
-            {isMuted ? '🔇 Unmute' : '🔊 Mute'}
-          </button>
-        </div>
-      )}
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-10 left-10 text-6xl"
+          variants={floatVariants}
+          animate="animate"
+        >
+          💝
+        </motion.div>
 
-      {/* Decorative balloons */}
-      <motion.div
-        className="absolute top-10 left-10 text-4xl opacity-50"
-        variants={floatVariants}
-        animate="animate"
-      >
-        🎈
-      </motion.div>
+        <motion.div
+          className="absolute top-20 right-20 text-6xl"
+          variants={floatVariants}
+          animate="animate"
+          transition={{
+            delay: 0.3,
+            duration: 3,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        >
+          ✨
+        </motion.div>
 
-      <motion.div
-        className="absolute top-20 right-20 text-4xl opacity-50"
-        variants={floatVariants}
-        animate="animate"
-        transition={{
-          delay: 0.3,
-          duration: 3,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      >
-        🎂
-      </motion.div>
+        <motion.div
+          className="absolute bottom-20 right-10 text-6xl"
+          variants={floatVariants}
+          animate="animate"
+          transition={{
+            delay: 0.6,
+            duration: 3,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        >
+          💖
+        </motion.div>
 
-      <motion.div
-        className="absolute bottom-20 right-10 text-4xl opacity-40"
-        variants={floatVariants}
-        animate="animate"
-        transition={{
-          delay: 0.6,
-          duration: 3,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      >
-        🎈
-      </motion.div>
+        <motion.div
+          className="absolute bottom-32 left-20 text-6xl"
+          variants={floatVariants}
+          animate="animate"
+          transition={{
+            delay: 0.4,
+            duration: 3.5,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        >
+          🎉
+        </motion.div>
+      </div>
 
       {/* Main Content */}
       <motion.div
@@ -171,16 +156,32 @@ export default function Page() {
       >
         <div className="flex flex-col items-center gap-8">
 
-          {/* Baby Picture */}
+          {/* Baby Picture with Birthday Hat */}
           <motion.div variants={slideInVariants} className="relative">
-            <div className="relative w-64 h-64 md:w-80 md:h-80">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-06-13%20at%2014.06.55-xbkhOK20pDEB1RYOk8pDLgXIK2JgF9.jpeg"
-                alt="Baby picture"
-                className="w-full h-full object-cover rounded-3xl shadow-2xl"
-              />
+            <div className="relative w-72 h-72 md:w-96 md:h-96">
+              <motion.div variants={pulseVariants} animate="animate" className="absolute inset-0">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent to-primary opacity-20 rounded-3xl blur-2xl" />
+              </motion.div>
 
-              <div className="absolute -inset-4 rounded-3xl border-8 border-accent opacity-20 pointer-events-none" />
+              <div className="relative bg-white p-3 rounded-3xl shadow-2xl">
+                <img
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-06-13%20at%2014.06.55-xbkhOK20pDEB1RYOk8pDLgXIK2JgF9.jpeg"
+                  alt="Baby picture"
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+
+              {/* Birthday Hat */}
+              <motion.div
+                className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-7xl"
+                variants={hatVariants}
+                animate="animate"
+              >
+                🎉
+              </motion.div>
+
+              {/* Decorative frame glow */}
+              <div className="absolute -inset-6 rounded-3xl border-4 border-primary opacity-30 pointer-events-none" />
             </div>
           </motion.div>
 
@@ -189,24 +190,33 @@ export default function Page() {
             variants={itemVariants}
             className="text-center space-y-4"
           >
-            <h1 className="text-5xl md:text-6xl font-serif text-primary font-bold leading-tight text-balance">
+            <h1 className="text-5xl md:text-7xl font-serif text-primary font-bold leading-tight text-balance">
               Ishola mi
             </h1>
 
-            <p className="text-3xl md:text-4xl font-serif text-foreground font-light">
+            <p className="text-2xl md:text-3xl font-serif text-accent font-light">
               Happy birthday my love
+            </p>
+
+            <p className="text-lg md:text-xl text-foreground/70 font-light max-w-2xl mx-auto">
+              A special gift from your princess
             </p>
           </motion.div>
 
           {/* CTA Button */}
           <motion.div variants={itemVariants}>
-            <Link
-              href="/letter"
-              onClick={startMusic}
-              className="inline-block px-8 py-4 bg-accent text-white rounded-full font-medium text-lg hover:bg-primary transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Click here ✨
-            </Link>
+              <Link
+                href="/letter"
+                onClick={startMusic}
+                className="inline-block px-10 py-4 bg-primary text-white rounded-full font-semibold text-xl hover:bg-accent transition-all duration-300 shadow-xl hover:shadow-2xl"
+              >
+                Open Your Gift ✨
+              </Link>
+            </motion.div>
           </motion.div>
 
         </div>

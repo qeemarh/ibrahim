@@ -7,6 +7,7 @@ import { IoArrowBack } from 'react-icons/io5';
 
 export default function LetterPage() {
   const [isLetterOpen, setIsLetterOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const images = [
     {
@@ -19,22 +20,46 @@ export default function LetterPage() {
     },
   ];
 
-  const letterContent = `Ayanfe mi, Happy birthday Ibrahim Sulu-Gambari,
+  const letterContent = `Happy Birthday, my love ❤️
 
-As I write this, my heart is filled with so much love and gratitude for you. Today marks another year of your beautiful existence, and I just had to make sure you know how special you are to me.
+Before anything else, I pray that Allah blesses this new year of your life abundantly. May He grant you good health, happiness, peace of mind, success in every area of your life, and countless reasons to smile. May He increase you in wisdom, strengthen your deen, bless your rizq, protect you from harm, and make this year better than every year before it. Ameen.
 
-From the moment I met you, I knew you were different. Your smile lights up my world, and your love has changed me in ways I never thought possible. You make every day feel like an adventure, and with you by my side, I can conquer anything.
+Today is special because it's the day Allah brought you into this world, and I genuinely don't think I'll ever stop being grateful that He did.
 
-I love the little things about you—the way you laugh, the way you hold my hand, the way you look at me like I'm your whole world. You're my best friend, my partner, and my greatest blessing.
+It's funny because before you, you were just another person existing somewhere in the world, living your life completely unaware that one day you'd become one of the most important people in mine. Yet somehow, here we are.
 
-Thank you for being so patient, so kind, and so incredibly loving. Thank you for believing in us and for never giving up on me. You've taught me what true love really means.
+And I need you to know how much of a blessing you have been to me.
 
-As you celebrate today, I want you to know that I'm celebrating YOU—all that you are, all that you've done for me, and all the beautiful memories we're still going to create together.
+Thank you for your patience.
+Thank you for your consistency.
+Thank you for your kindness.
+Thank you for making me feel loved in ways I didn't even know I needed.
 
-Here's to another year of laughter, adventure, and endless love. I can't wait to spend it all with you.
+Thank you for every call, every conversation, every "yes mama," every "talk to me princess," every reassurance, every laugh, and every moment you've given me over these past months.
 
-Forever yours,
-Your Love ❤️`;
+One of my favorite things about you is your heart. The way you care about the people you love. The way you show up. The way you listen. The way you make people feel safe around you. There is something so beautiful about who you are beyond everything else, and I hope you never lose that.
+
+I hope this year brings you opportunities you've prayed for, success you've worked for, happiness you deserve, and blessings you haven't even imagined yet.
+
+I also pray that whenever you miss your dad, Allah replaces the heaviness with peace, fills your heart with comfort, and grants him the highest ranks in Jannah. Ameen.
+
+And since it's your birthday, let me be a little selfish for a second.
+
+I'm grateful that I get to love you.
+I'm grateful that I get to know you.
+And I'm grateful that out of all the people in this world, I get to call you mine.
+
+You have brought so much happiness into my life, and I hope that today you feel even a fraction of the love that you give to everyone around you.
+
+Happy Birthday, baby. ❤️
+
+May this new chapter of your life be filled with barakah, laughter, answered prayers, unforgettable memories, and all the goodness your heart can hold.
+
+I love you.
+
+Yours always,
+
+Your Princess ❤️`;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -56,12 +81,22 @@ Your Love ❤️`;
     },
   };
 
+  const handleEnvelopeClick = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setIsLetterOpen(true);
+        setIsAnimating(false);
+      }, 800);
+    }
+  };
+
   return (
     <main className="min-h-screen w-full bg-background py-8 md:py-16">
       {/* Back button */}
       <Link
         href="/"
-        className="inline-flex items-center gap-2 ml-4 md:ml-8 text-primary hover:text-accent transition-colors mb-8"
+        className="inline-flex items-center gap-2 ml-4 md:ml-8 text-primary hover:text-accent transition-colors mb-8 font-semibold"
       >
         <IoArrowBack size={20} />
         <span>Back</span>
@@ -77,7 +112,7 @@ Your Love ❤️`;
           {/* Photo Gallery */}
           <motion.div variants={itemVariants} className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-serif text-primary font-bold">
-              Our Memories
+              Special Moments
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {images.map((image, index) => (
@@ -87,106 +122,144 @@ Your Love ❤️`;
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="relative overflow-hidden rounded-2xl shadow-lg">
+                  <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-white p-2">
                     <img
                       src={image.src}
                       alt={image.alt}
-                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-300 rounded-2xl"
                     />
-                    {/* Decorative frame */}
-                    <div className="absolute inset-0 border-8 border-secondary opacity-30 rounded-2xl pointer-events-none" />
+                    <div className="absolute inset-2 rounded-2xl border-4 border-accent opacity-20 pointer-events-none" />
                   </div>
                 </motion.div>
               ))}
             </div>
-            <p className="text-muted-foreground italic">
-              More photos coming soon as we grow our collection together...
+            <p className="text-muted-foreground italic text-lg">
+              More memories to capture together...
             </p>
           </motion.div>
 
-          {/* Love Letter as Envelope */}
+          {/* Love Letter as Decorated Envelope */}
           <motion.div variants={itemVariants} className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-serif text-primary font-bold">
-              A Letter for You
+              A Letter from Your Heart
             </h2>
 
-            {/* Envelope Design */}
-            <motion.div
-              className="bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer"
-              onClick={() => setIsLetterOpen(!isLetterOpen)}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div
-                className={`relative transition-all duration-500 ${
-                  isLetterOpen ? 'h-auto' : 'h-48'
-                }`}
+            {/* Decorated Envelope */}
+            {!isLetterOpen ? (
+              <motion.div
+                className="relative cursor-pointer h-96"
+                onClick={handleEnvelopeClick}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
               >
-                {/* Envelope flap */}
-                <div
-                  className={`absolute top-0 left-0 right-0 bg-gradient-to-b from-secondary to-secondary/80 p-6 md:p-8 transition-all duration-500 ${
-                    isLetterOpen
-                      ? 'rotate-x-180 transform opacity-0 h-0'
-                      : 'h-32 md:h-40'
-                  }`}
+                {/* Envelope body */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-b from-accent to-primary rounded-lg shadow-2xl overflow-hidden"
+                  animate={isAnimating ? { rotateZ: -15, y: -20 } : { rotateZ: 0, y: 0 }}
+                  transition={{ duration: 0.8 }}
                 >
-                  <div className="flex items-center justify-between h-full">
-                    <div>
-                      <p className="text-sm text-foreground/70">To my Love</p>
-                      <p className="text-lg font-serif text-primary font-semibold">
-                        Ibrahim
-                      </p>
+                  {/* Envelope decoration */}
+                  <div className="absolute inset-0 bg-white/5 opacity-30" />
+
+                  {/* Flap */}
+                  <motion.div
+                    className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-primary to-accent origin-top"
+                    animate={isAnimating ? { rotateX: 180, opacity: 0 } : { rotateX: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
+                    style={{ perspective: '1000px' }}
+                  >
+                    <div className="w-full h-full flex items-center justify-center">
+                      <div className="text-center text-white">
+                        <p className="text-sm font-light">To my Love</p>
+                        <p className="text-2xl font-serif font-bold">Ibrahim</p>
+                      </div>
                     </div>
-                    <button
-                      className="text-primary hover:text-accent transition-colors"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setIsLetterOpen(true);
-                      }}
-                    >
-                      <span className="text-sm font-medium border-2 border-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-all">
-                        Read more
-                      </span>
-                    </button>
-                  </div>
-                </div>
+                  </motion.div>
 
-                {/* Letter content */}
-                <div
-                  className={`p-6 md:p-8 bg-white transition-all duration-500 ${
-                    isLetterOpen ? 'pt-8' : 'pt-40 md:pt-44'
-                  }`}
-                >
-                  <div className="space-y-4 max-h-96 overflow-y-auto">
-                    {letterContent.split('\n\n').map((paragraph, index) => (
-                      <p
-                        key={index}
-                        className="text-foreground/80 leading-relaxed font-light whitespace-pre-wrap"
-                        style={{ fontFamily: 'cursive' }}
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
+                  {/* Letter edges showing */}
+                  <div className="absolute inset-0 flex items-center justify-center pt-32">
+                    <div className="text-center text-white">
+                      <p className="text-4xl mb-4">💌</p>
+                      <p className="text-lg font-serif">Click to reveal your gift</p>
+                    </div>
                   </div>
 
-                  {isLetterOpen && (
-                    <motion.button
+                  {/* Decorative ribbons and patterns */}
+                  <div className="absolute top-4 left-4 text-2xl">✨</div>
+                  <div className="absolute top-4 right-4 text-2xl">💝</div>
+                  <div className="absolute bottom-4 left-4 text-2xl">🌹</div>
+                  <div className="absolute bottom-4 right-4 text-2xl">💖</div>
+                </motion.div>
+
+                {/* Stickman pulling letter animation */}
+                {isAnimating && (
+                  <motion.div
+                    className="absolute -right-20 top-1/2 transform -translate-y-1/2 z-20"
+                    initial={{ x: 0 }}
+                    animate={{ x: 40 }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    <div className="relative w-16 h-16">
+                      {/* Head with face */}
+                      <div className="absolute top-0 left-4 w-8 h-8 bg-gradient-to-b from-accent to-primary rounded-full border-2 border-primary">
+                        <div className="flex items-center justify-center w-full h-full">
+                          <span className="text-sm">😊</span>
+                        </div>
+                      </div>
+                      {/* Body */}
+                      <line x1="8" y1="8" x2="8" y2="20" stroke="currentColor" strokeWidth="2" />
+                      {/* Arms */}
+                      <line x1="2" y1="12" x2="14" y2="12" stroke="currentColor" strokeWidth="2" />
+                      {/* Legs */}
+                      <line x1="4" y1="20" x2="2" y2="28" stroke="currentColor" strokeWidth="2" />
+                      <line x1="12" y1="20" x2="14" y2="28" stroke="currentColor" strokeWidth="2" />
+                    </div>
+                  </motion.div>
+                )}
+              </motion.div>
+            ) : (
+              /* Full Letter Display */
+              <motion.div
+                className="bg-white rounded-2xl shadow-2xl p-8 md:p-12"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className="space-y-6 max-h-96 overflow-y-auto">
+                  {letterContent.split('\n\n').map((paragraph, index) => (
+                    <motion.p
+                      key={index}
+                      className="text-foreground/80 leading-relaxed font-light text-lg"
+                      style={{ fontFamily: 'Georgia, serif' }}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="mt-6 text-primary hover:text-accent transition-colors text-sm font-medium border-t-2 border-secondary pt-4"
-                      onClick={() => setIsLetterOpen(false)}
+                      transition={{ delay: index * 0.05 }}
                     >
-                      Close letter
-                    </motion.button>
-                  )}
+                      {paragraph}
+                    </motion.p>
+                  ))}
                 </div>
-              </div>
-            </motion.div>
+
+                <motion.button
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                  onClick={() => setIsLetterOpen(false)}
+                  className="mt-8 w-full bg-primary text-white py-3 rounded-full font-semibold hover:bg-accent transition-all"
+                >
+                  Close Letter
+                </motion.button>
+              </motion.div>
+            )}
 
             {!isLetterOpen && (
-              <p className="text-center text-muted-foreground text-sm">
-                Click the envelope to read my full letter to you 💌
-              </p>
+              <motion.p
+                className="text-center text-muted-foreground text-base font-light"
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                Click the envelope to read your love letter 💌
+              </motion.p>
             )}
           </motion.div>
         </div>
