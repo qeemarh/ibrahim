@@ -263,6 +263,23 @@ Your Princess ❤️`;
             )}
           </motion.div>
         </div>
+
+        {/* Continue to Menu Button */}
+        {isLetterOpen && (
+          <motion.div
+            className="mt-12 text-center col-span-1 lg:col-span-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <Link
+              href="/menu"
+              className="inline-block px-10 py-4 bg-primary text-white rounded-full font-semibold text-lg hover:bg-accent transition-all shadow-lg hover:shadow-xl"
+            >
+              Explore More Surprises 💜
+            </Link>
+          </motion.div>
+        )}
       </motion.div>
     </main>
   );
