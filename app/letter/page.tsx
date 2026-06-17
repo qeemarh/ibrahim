@@ -8,6 +8,7 @@ import { IoArrowBack } from 'react-icons/io5';
 export default function LetterPage() {
   const [isLetterOpen, setIsLetterOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [showAllPhotos, setShowAllPhotos] = useState(false);
 
   const images = [
     {
@@ -17,6 +18,30 @@ export default function LetterPage() {
     {
       src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-06-13%20at%2014.19.58-iGEglRni5nOjkAvySjEuHxKD7HYMMa.jpeg',
       alt: 'Photo 2',
+    },
+    {
+      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-06-13%20at%2014.19.53%20%283%29-wjXGB8StL6i3X39PU4ADfqwbF60FjS.jpeg',
+      alt: 'Photo 3',
+    },
+    {
+      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-06-13%20at%2014.19.53%20%284%29-5ie2Kklo8J4G9zaK2qixR9fBB0RUHS.jpeg',
+      alt: 'Photo 4',
+    },
+    {
+      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-06-17%20at%2019.29.57%20%282%29-ileNRSYjEBUL7cTq6CI9pK5jCEW0RY.jpeg',
+      alt: 'Photo 5',
+    },
+    {
+      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-06-13%20at%2014.19.53%20%282%29-n7ILbRZzcuJ04GWWiIZdiejDLb8JsL.jpeg',
+      alt: 'Photo 6',
+    },
+    {
+      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-06-17%20at%2019.29.57%20%281%29-yie2A45tPZouMTROBJtF0OYJ8OVQG0.jpeg',
+      alt: 'Photo 7',
+    },
+    {
+      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-06-17%20at%2019.29.57-mJqQilELeOX2jZryxpPoyoNx05zQeM.jpeg',
+      alt: 'Photo 8',
     },
   ];
 
@@ -112,10 +137,10 @@ Your Princess ❤️`;
           {/* Photo Gallery */}
           <motion.div variants={itemVariants} className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-serif text-primary font-bold">
-              Ayanfe mi
+              Ishola mi
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {images.map((image, index) => (
+              {images.slice(0, 2).map((image, index) => (
                 <motion.div
                   key={index}
                   className="relative group"
@@ -133,6 +158,67 @@ Your Princess ❤️`;
                 </motion.div>
               ))}
             </div>
+
+            {/* View All Photos Button */}
+            {!showAllPhotos && (
+              <motion.button
+                onClick={() => setShowAllPhotos(true)}
+                className="mt-4 px-6 py-3 bg-primary text-white rounded-full font-semibold hover:bg-accent transition-all"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View All {images.length} Photos
+              </motion.button>
+            )}
+
+            {/* All Photos Modal */}
+            {showAllPhotos && (
+              <motion.div
+                className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                onClick={() => setShowAllPhotos(false)}
+              >
+                <motion.div
+                  className="bg-white rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="text-2xl font-serif text-primary font-bold">All Moments</h3>
+                    <button
+                      onClick={() => setShowAllPhotos(false)}
+                      className="text-2xl text-accent hover:text-primary transition"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {images.map((image, index) => (
+                      <motion.div
+                        key={index}
+                        className="relative group"
+                        whileHover={{ scale: 1.05 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-white p-2">
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-300 rounded-2xl"
+                          />
+                          <div className="absolute inset-2 rounded-2xl border-4 border-accent opacity-20 pointer-events-none" />
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
             <p className="text-muted-foreground italic text-lg">
               Your beautiful moments, forever cherished in my heart...
             </p>
@@ -267,7 +353,7 @@ Your Princess ❤️`;
         {/* Continue to Menu Button */}
         {isLetterOpen && (
           <motion.div
-            className="mt-12 text-center col-span-1 lg:col-span-2"
+            className="mt-12 text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
