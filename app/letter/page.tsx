@@ -45,30 +45,46 @@ export default function LetterPage() {
     },
   ];
 
-  const letterContent = `Happy Birthday, Ishola mi ❤️
+  const letterContent = `Happy Birthday, my love ❤️
 
-Before everything, I pray that Allah blesses this year of your life with endless blessings, success in all your endeavors, good health, and a heart filled with peace. May He increase your wisdom, strengthen your faith, and grant you all the goodness you deserve. Ameen.
+Before anything else, I pray that Allah blesses this new year of your life abundantly. May He grant you good health, happiness, peace of mind, success in every area of your life, and countless reasons to smile. May He increase you in wisdom, strengthen your deen, bless your rizq, protect you from harm, and make this year better than every year before it. Ameen.
 
-I still can't believe I'm the one writing this to you. On the 8th of March, when you sent me that "Asalamualaikum" message on Instagram during Ramadan, I had no idea that one simple greeting would change my entire life. But here we are, and I'm so grateful Allah knew what I needed before I even knew it myself.
+Today is special because it's the day Allah brought you into this world, and I genuinely don't think I'll ever stop being grateful that He did.
 
-Do you remember how we just... vibed? From that very first conversation, it felt different. It felt right. I can go back to check our chats from that day—the way you made me feel seen, heard, and valued from the very beginning. That was the moment I started falling for you, even if I didn't fully realize it yet.
+It's funny because before you, you were just another person existing somewhere in the world, living your life completely unaware that one day you'd become one of the most important people in mine. Yet somehow, here we are.
 
-And then March 28th came. The day you asked me to be your girlfriend with flowers and a handwritten letter. I still have that letter, you know. When I read it, I'm reminded of exactly why my heart chose you. That day made it official—you became the most important person in my world.
+And I need you to know how much of a blessing you have been to me.
 
-I'm grateful for every conversation we've had. For every time you've made me laugh until my stomach hurt. For the inside jokes that only we understand—Tunde, "if you beat me good for you, but if I beat you," the sips self-control sticker. These are the little moments that make our love story uniquely ours.
+Thank you for your patience.
+Thank you for your consistency.
+Thank you for your kindness.
+Thank you for making me feel loved in ways I didn't even know I needed.
 
-I'm grateful that you were brave enough to say "I love you" first. That moment was terrifying and beautiful all at once. And I'm grateful that I get to love you back with everything I have. Some days I wonder how I got so lucky to call you mine.
+Thank you for every call, every conversation, every reassurance, every laugh, and every moment you've given me over these past months.
 
-I love that Ibrahim (my Ibrahim) cares so deeply about everyone around him. Your heart is the most beautiful thing about you, and I hope you never lose that goodness.
+One of my favorite things about you is your heart. The way you care about the people you love. The way you show up. The way you listen. The way you make people feel safe around you. There is something so beautiful about who you are beyond everything else, and I hope you never lose that.
 
-Thank you for these almost 3 months of being officially yours. They've been the happiest of my life. Thank you for showing up for me every single day. Thank you for listening when I need to talk. Thank you for being patient, kind, and consistently choosing me.
+I hope this year brings you opportunities you've prayed for, success you've worked for, happiness you deserve, and blessings you haven't even imagined yet.
 
-I know this year will bring you everything you've been praying for. I know Allah has amazing plans for us. And I'm honored to be on this journey with you.
+I also pray that whenever you miss your dad, Allah replaces the heaviness with peace, fills your heart with comfort, and grants him the highest ranks in Jannah. Ameen.
 
-Happy Birthday, my love. May this year be filled with happiness, laughter, unforgettable memories, and all the blessings your beautiful heart deserves.
+And since it's your birthday, let me be a little selfish for a second.
 
-Forever yours,
-Asmau 💜❤️`;
+I'm grateful that I get to love you.
+I'm grateful that I get to know you.
+And I'm grateful that out of all the people in this world, I get to call you mine.
+
+You have brought so much happiness into my life, and I hope that today you feel even a fraction of the love that you give to everyone around you.
+
+Happy Birthday, baby. ❤️
+
+May this new chapter of your life be filled with barakah, laughter, answered prayers, unforgettable memories, and all the goodness your heart can hold.
+
+I love you.
+
+Yours always,
+
+Your Princess ❤️`;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -101,11 +117,15 @@ Asmau 💜❤️`;
   };
 
   return (
-    <main className="min-h-screen w-full bg-background py-8 md:py-16">
+    <main className="min-h-screen w-full bg-gradient-to-br from-background via-purple-50 to-background py-8 md:py-16 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary rounded-full opacity-5 blur-3xl" />
+      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent rounded-full opacity-5 blur-3xl" />
+      
       {/* Back button */}
       <Link
         href="/"
-        className="inline-flex items-center gap-2 ml-4 md:ml-8 text-primary hover:text-accent transition-colors mb-8 font-semibold"
+        className="inline-flex items-center gap-2 ml-4 md:ml-8 text-primary hover:text-accent transition-all hover:gap-3 mb-8 font-semibold"
       >
         <IoArrowBack size={20} />
         <span>Back</span>
@@ -117,12 +137,15 @@ Asmau 💜❤️`;
         initial="hidden"
         animate="visible"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start relative z-10">
           {/* Photo Gallery */}
-          <motion.div variants={itemVariants} className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-serif text-primary font-bold">
-              Ishola mi
-            </h2>
+          <motion.div variants={itemVariants} className="space-y-8">
+            <div className="space-y-2">
+              <h2 className="text-4xl md:text-5xl font-serif text-primary font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                Ishola mi
+              </h2>
+              <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent rounded-full" />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {images.slice(0, 2).map((image, index) => (
                 <motion.div
@@ -290,11 +313,17 @@ Asmau 💜❤️`;
             ) : (
               /* Full Letter Display */
               <motion.div
-                className="bg-white rounded-2xl shadow-2xl p-8 md:p-12"
+                className="bg-gradient-to-br from-white via-rose-50 to-white rounded-3xl shadow-2xl p-8 md:p-12 border border-pink-100 relative"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
+                {/* Decorative corners */}
+                <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-primary rounded-tl-2xl opacity-30" />
+                <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-primary rounded-tr-2xl opacity-30" />
+                <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-primary rounded-bl-2xl opacity-30" />
+                <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-primary rounded-br-2xl opacity-30" />
+
                 <div className="space-y-6 max-h-96 overflow-y-auto">
                   {letterContent.split('\n\n').map((paragraph, index) => (
                     <motion.p

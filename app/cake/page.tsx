@@ -184,56 +184,83 @@ export default function CakePage() {
                 <div className="w-96 h-8 bg-gradient-to-b from-gray-300 to-gray-400 rounded-full shadow-2xl border-2 border-gray-500" />
               </motion.div>
 
-              {/* Candles with realistic flame */}
+              {/* Realistic candles with layered flames */}
               <AnimatePresence>
                 {!blownOut && (
                   <>
                     {[0, 1, 2, 3].map((index) => (
                       <motion.div
                         key={`candle-${index}`}
-                        className="absolute top-12"
+                        className="absolute top-10"
                         style={{
-                          left: `${18 + index * 20}%`,
+                          left: `${16 + index * 22}%`,
                         }}
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0, scale: 0 }}
                         transition={{ duration: 0.6 }}
                       >
-                        {/* Candle wax stick - cream/white colored */}
-                        <div className="w-3 h-20 bg-gradient-to-b from-red-200 to-red-300 rounded-full mx-auto shadow-md border border-red-400" />
+                        {/* Candle wax - cream/ivory colored with texture */}
+                        <div className="relative w-4 h-24 mx-auto">
+                          {/* Main candle body */}
+                          <div className="absolute inset-0 bg-gradient-to-b from-yellow-50 via-amber-50 to-amber-100 rounded-full shadow-lg border border-yellow-200" />
+                          
+                          {/* Candle texture lines */}
+                          <div className="absolute left-0.5 top-2 w-1 h-16 bg-gradient-to-b from-yellow-200 to-transparent opacity-40 rounded-full" />
+                          <div className="absolute right-0.5 top-3 w-1 h-14 bg-gradient-to-b from-yellow-100 to-transparent opacity-30 rounded-full" />
+                          
+                          {/* Flame core - bright yellow inner flame */}
+                          <motion.div
+                            className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-2.5 h-8 origin-bottom"
+                            animate={{
+                              scaleY: [1, 1.15, 0.95, 1.1, 1],
+                              rotateZ: [0, -3, 3, -2, 0],
+                            }}
+                            transition={{
+                              duration: 1.2,
+                              repeat: Infinity,
+                              ease: 'easeInOut',
+                              delay: index * 0.15,
+                            }}
+                          >
+                            <div className="w-full h-full bg-gradient-to-t from-amber-400 via-yellow-300 to-yellow-100 rounded-full" />
+                          </motion.div>
 
-                        {/* Flame glow effect */}
-                        <motion.div
-                          className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-8 h-10 rounded-full opacity-60"
-                          style={{
-                            background: 'radial-gradient(circle, rgba(255,200,0,0.8) 0%, rgba(255,100,0,0.4) 100%)',
-                          }}
-                          animate={{
-                            scale: [1, 1.3, 1.1, 1.2, 1],
-                            opacity: [0.6, 0.8, 0.5, 0.7, 0.6],
-                          }}
-                          transition={{
-                            duration: 1,
-                            repeat: Infinity,
-                            ease: 'easeInOut',
-                          }}
-                        />
+                          {/* Flame middle - orange glow */}
+                          <motion.div
+                            className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-4 h-9 rounded-full origin-bottom opacity-70"
+                            style={{
+                              background: 'linear-gradient(to top, rgba(255, 140, 0, 0.6), rgba(255, 165, 0, 0.3))',
+                            }}
+                            animate={{
+                              scaleY: [1, 1.1, 0.9, 1.05, 1],
+                              rotateZ: [0, -2, 2, -1, 0],
+                            }}
+                            transition={{
+                              duration: 1.2,
+                              repeat: Infinity,
+                              ease: 'easeInOut',
+                              delay: index * 0.15,
+                            }}
+                          />
 
-                        {/* Actual flame shape */}
-                        <motion.div
-                          className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-3 h-10"
-                          animate={{
-                            scaleY: [1, 1.2, 0.9, 1.1, 1],
-                            rotateZ: [0, -2, 2, -1, 0],
-                          }}
-                          transition={{
-                            duration: 1,
-                            repeat: Infinity,
-                            ease: 'easeInOut',
-                          }}
-                        >
-                          <div className="w-full h-full bg-gradient-to-t from-orange-500 via-yellow-400 to-yellow-100 rounded-full shadow-lg blur-sm" />
-                        </motion.div>
+                          {/* Flame outer glow - soft halo */}
+                          <motion.div
+                            className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-6 h-10 rounded-full blur-md origin-bottom"
+                            style={{
+                              background: 'radial-gradient(ellipse at center, rgba(255, 165, 0, 0.4) 0%, rgba(255, 100, 0, 0.1) 100%)',
+                            }}
+                            animate={{
+                              scale: [1, 1.2, 0.95, 1.15, 1],
+                              opacity: [0.5, 0.7, 0.4, 0.6, 0.5],
+                            }}
+                            transition={{
+                              duration: 1.2,
+                              repeat: Infinity,
+                              ease: 'easeInOut',
+                              delay: index * 0.15,
+                            }}
+                          />
+                        </div>
                       </motion.div>
                     ))}
                   </>

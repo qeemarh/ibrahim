@@ -92,7 +92,25 @@ export default function Page() {
   };
 
   return (
-    <main className="min-h-screen w-full bg-background overflow-hidden flex items-center justify-center relative">
+    <main className="min-h-screen w-full bg-gradient-to-br from-background via-purple-50 to-background overflow-hidden flex items-center justify-center relative">
+      
+      {/* Animated gradient orbs */}
+      <motion.div
+        className="absolute -top-32 -right-32 w-80 h-80 bg-gradient-to-br from-primary to-accent rounded-full opacity-10 blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.1, 0.15, 0.1],
+        }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute -bottom-32 -left-32 w-80 h-80 bg-gradient-to-tr from-accent to-primary rounded-full opacity-10 blur-3xl"
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.1, 0.15, 0.1],
+        }}
+        transition={{ duration: 8, repeat: Infinity, delay: 1 }}
+      />
 
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -188,11 +206,14 @@ export default function Page() {
           {/* Birthday Text */}
           <motion.div
             variants={itemVariants}
-            className="text-center space-y-4"
+            className="text-center space-y-6"
           >
-            <h1 className="text-5xl md:text-7xl font-serif text-primary font-bold leading-tight text-balance">
-              Ishola mi
-            </h1>
+            <div className="space-y-2">
+              <h1 className="text-5xl md:text-7xl font-serif text-primary font-bold leading-tight text-balance bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-600 to-accent">
+                Ishola mi
+              </h1>
+              <div className="h-1.5 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto" />
+            </div>
 
             <p className="text-2xl md:text-3xl font-serif text-accent font-light">
               Happy birthday my love
@@ -206,15 +227,29 @@ export default function Page() {
           {/* CTA Button */}
           <motion.div variants={itemVariants}>
             <motion.div
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.08, rotate: 1 }}
               whileTap={{ scale: 0.95 }}
             >
               <Link
                 href="/letter"
                 onClick={startMusic}
-                className="inline-block px-10 py-4 bg-primary text-white rounded-full font-semibold text-xl hover:bg-accent transition-all duration-300 shadow-xl hover:shadow-2xl"
+                className="relative inline-block px-12 py-4 text-white rounded-full font-semibold text-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group"
               >
-                Open Your Gift ✨
+                {/* Button gradient background */}
+                <span className="absolute inset-0 bg-gradient-to-r from-primary via-purple-600 to-accent rounded-full group-hover:bg-gradient-to-l transition-all duration-300" />
+                
+                {/* Shine effect */}
+                <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20 rounded-full transform -skew-x-12 group-hover:translate-x-full transition-transform duration-700" />
+                </span>
+                
+                {/* Button text */}
+                <span className="relative flex items-center gap-2">
+                  Open Your Gift ✨
+                </span>
+
+                {/* Glow effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-full opacity-0 group-hover:opacity-50 blur transition-opacity duration-300 -z-10" />
               </Link>
             </motion.div>
           </motion.div>
