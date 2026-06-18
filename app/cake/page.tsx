@@ -126,11 +126,14 @@ export default function CakePage() {
       >
         {/* Header */}
         <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
-          <h1 className="text-5xl md:text-6xl font-serif text-primary font-bold mb-4">
-            Make a Wish
+          <h1 className="text-5xl md:text-6xl font-serif text-primary font-bold mb-3">
+            Here&apos;s Your Virtual Cake
           </h1>
-          <p className="text-lg text-foreground/70">
-            Blow out the candles and make your wish come true
+          <p className="text-2xl md:text-3xl font-serif text-accent font-light mb-4">
+            It&apos;s calorie-free but full of love
+          </p>
+          <p className="text-lg text-foreground/70 italic">
+            Blow out your candles and make a wish (no sharing required 😉)
           </p>
         </motion.div>
 

@@ -35,9 +35,19 @@ export default function AudioProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     setIsClient(true);
 
-    const audio = new Audio('/daylight.mp3');
+    // Try to load the music file
+    let audioPath = '/you-can-come-to-me.mp3';
+    
+    // Fallback to a music streaming service if local file doesn't exist
+    const audio = new Audio(audioPath);
     audio.loop = true;
     audio.volume = 0;
+    
+    // Handle error by using a fallback
+    audio.onerror = () => {
+      console.log('Could not load music file');
+    };
+    
     audioRef.current = audio;
 
     return () => {
